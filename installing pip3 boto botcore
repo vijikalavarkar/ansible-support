@@ -1,0 +1,9 @@
+1. ansible -i inventory.ini all -b -m apt -a "name=python3-pip state=present update_cache=yes" --vault-password-file vault.pass
+2. ansible -i inventory.ini all -b -m apt \
+  -a "name=python3-boto3,python3-botocore state=present update_cache=yes" \
+  --vault-password-file vault.pass
+
+
+To Verify:
+3. ansible -i inventory.ini all -m shell -a "python3 -c \"import boto3,botocore; print('boto3', boto3.__version__); print('botocore', botocore.__version__)\"" \
+  --vault-password-file vault.pass

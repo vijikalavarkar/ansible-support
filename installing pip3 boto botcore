@@ -7,3 +7,10 @@
 To Verify:
 3. ansible -i inventory.ini all -m shell -a "python3 -c \"import boto3,botocore; print('boto3', boto3.__version__); print('botocore', botocore.__version__)\"" \
   --vault-password-file vault.pass
+
+
+
+
+If you want to cpy the private key to the all mamange nodes manually
+ssh-copy-id -i ~/.ssh/id_rsa.pub -o "IdentityFile=myaws-key.pem" ubuntu@<managed-node1-ip>
+ssh-copy-id -i ~/.ssh/id_rsa.pub -o "IdentityFile=myaws-key.pem" ubuntu@<managed-node2-ip>
